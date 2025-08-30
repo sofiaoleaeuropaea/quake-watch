@@ -23,3 +23,7 @@ export interface Earthquake {
   time: number;
   coordinates: [number, number];
 }
+
+export interface EarthquakeRow {
+  earthquake: Earthquake;
+}
