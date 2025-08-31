@@ -1,8 +1,8 @@
-import type { EarthquakeRow } from "../types/earthquake";
-import { formatCoordinates, magnitudeColorClasses } from "../utils/earthquakeData";
+import type { EarthquakeProps } from "../types/earthquake";
+import { formatCoordinates, magnitudeColorClasses } from "../utils/formatEarthquakeData";
 import { formatDate } from '../utils/formatData';
 
-const EarthquakeItem = ({ earthquake }: EarthquakeRow) => {
+const EarthquakeItem = ({ earthquake }: EarthquakeProps) => {
   return (
     <tr className="hover:bg-gray-50">
       <td className="p-3">
