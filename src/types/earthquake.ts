@@ -24,6 +24,19 @@ export interface Earthquake {
   coordinates: [number, number];
 }
 
-export interface EarthquakeRow {
+export interface EarthquakeProps {
   earthquake: Earthquake;
 }
+
+export interface MapViewProps {
+  earthquakes: Earthquake[];
+  onEarthquakeClick?: (eq: Earthquake) => void;
+}
+
+export interface InfoCardProps {
+  icon: React.ReactNode;
+  label: string;
+  value: string | number;
+  iconColor?: string;
+}
+
