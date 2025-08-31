@@ -29,7 +29,8 @@ export interface EarthquakeProps {
 }
 
 export interface MapViewProps {
-  earthquakes: Earthquake[];
+  earthquakesData: Earthquake[];
+  selectedEarthquake:Earthquake | null;
   onEarthquakeClick?: (eq: Earthquake) => void;
 }
 
@@ -40,3 +41,7 @@ export interface InfoCardProps {
   iconColor?: string;
 }
 
+export type EarthquakeTableProps = {
+  selectedEarthquake: Earthquake | null;
+  onRowClick?: (eq: Earthquake) => void;
+}
