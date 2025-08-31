@@ -29,12 +29,12 @@ const Navbar = () => {
           {/* Desktop navbar */}
           <div className='hidden md:flex items-center gap-6'>
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className='hover:text-[#327FEF] transition-colors'>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
