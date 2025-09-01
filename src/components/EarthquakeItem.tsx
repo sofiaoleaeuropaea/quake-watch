@@ -55,4 +55,4 @@ const EarthquakeItem = ({
   );
 };
 
-export default EarthquakeItem;
+export default memo(EarthquakeItem);
