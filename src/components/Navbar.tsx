@@ -1,16 +1,37 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import QuakeWaveLogo from '../../public/assets/QuakeWave_logo.png';
 import { navItems } from '../utils/navItems';
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
 
   const toggleMobileMenu = () => setMobileOpen(!mobileOpen);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      requestAnimationFrame(() => firstLinkRef.current?.focus());
+    } else {
+      requestAnimationFrame(() => toggleBtnRef.current?.focus());
+    }
+  }, [mobileOpen]);
+
   return (
-    <nav className='bg-[#1C1C1E] text-gray-200 shadow-md'>
+    <nav
+      aria-label='Navigation bar'
+      className='bg-[#1C1C1E] text-gray-200 shadow-md'>
       <div className='mx-4 md:mx-10 lg:mx-20'>
         <div className='flex items-center justify-between h-16'>
           <Link to='/'>
@@ -26,21 +47,42 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop navbar */}
-          <div className='hidden md:flex items-center gap-6'>
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className='hover:text-[#327FEF] transition-colors'>
-                {item.label}
-              </Link>
+          <ul
+            id='navigation-bar'
+            role='list'
+            aria-hidden={!mobileOpen && undefined}
+            className={[
+              mobileOpen ? 'block' : 'hidden',
+              'absolute left-0 right-0 top-16 z-40 bg-[#1C1C1E] px-4 py-2 space-y-2',
+              'md:static md:flex md:items-center md:space-y-0 md:gap-8 md:bg-transparent md:px-0 md:py-0',
+            ].join(' ')}>
+            {navItems.map((navItem, id) => (
+              <li key={navItem.href}>
+                <NavLink
+                  to={navItem.href}
+                  ref={id === 0 ? firstLinkRef : null}
+                  onClick={() => setMobileOpen(false)}
+                  className={({ isActive }) =>
+                    [
+                      'block py-2 transition-colors',
+                      'hover:text-[#327FEF]',
+                      isActive ? 'text-[#327FEF]' : '',
+                    ].join(' ')
+                  }>
+                  {navItem.label}
+                </NavLink>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          {/* Mobile menu button */}
           <div className='md:hidden'>
-            <button onClick={toggleMobileMenu}>
+            <button
+              type='button'
+              ref={toggleBtnRef}
+              onClick={toggleMobileMenu}
+              aria-expanded={mobileOpen}
+              aria-controls='navigation-bar'
+              aria-label={mobileOpen ? 'Close main menu' : 'Open main menu'}>
               {mobileOpen ? (
                 <FaTimes className='w-6 h-6 text-[#327FEF]' />
               ) : (
@@ -50,21 +92,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className='md:hidden bg-[#1C1C1E] text-gray-200 px-4 py-2 space-y-2'>
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className='block hover:text-[#5D2DE6] transition-colors'
-              onClick={() => setMobileOpen(false)}>
-              {item.label}
-            </a>
-          ))}
-        </div>
-      )}
     </nav>
   );
 };
