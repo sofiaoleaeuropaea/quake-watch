@@ -1,36 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-interface UsePaginationProps<T> {
-  items: T[];
+export interface UsePaginationProps<Item> {
+  items: Item[];
   itemsPerPage: number;
+  initialPage?: number;
 }
 
-export const usePagination = <T,>({
+export interface UsePaginationResult<Item> {
+  currentItems: Item[];
+  currentPage: number;
+  totalPages: number;
+  navigateToPage: (page: number) => void;
+  nextPage: () => void;
+  previousPage: () => void;
+}
+
+export function usePagination<Item>({
   items,
   itemsPerPage,
-}: UsePaginationProps<T>) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-
-  const currentItems = items.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
+  initialPage = 1,
+}: UsePaginationProps<Item>): UsePaginationResult<Item> {
+  const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
+  const [currentPage, setCurrentPage] = useState(
+    Math.min(Math.max(initialPage, 1), totalPages)
   );
 
-  const goToPage = (page: number) => {
-    const newPage = Math.max(1, Math.min(page, totalPages));
-    setCurrentPage(newPage);
-  };
+  useEffect(() => {
+    setCurrentPage((p) => Math.min(Math.max(p, 1), totalPages));
+  }, [totalPages]);
 
-  const nextPage = () => goToPage(currentPage + 1);
-  const previousPage = () => goToPage(currentPage - 1);
+  const currentItems = useMemo(
+    () =>
+      items.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      ),
+    [items, currentPage, itemsPerPage]
+  );
 
-  return {
-    currentItems,
-    currentPage,
-    totalPages,
-    goToPage,
-    nextPage,
-    previousPage,
-  };
-};
+  const navigateToPage = (page: number) =>
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  const nextPage = () => setCurrentPage((p) => Math.min(p + 1, totalPages));
+  const previousPage = () => setCurrentPage((p) => Math.max(p - 1, 1));
+
+  return { currentItems, currentPage, totalPages, navigateToPage, nextPage, previousPage };
+}
