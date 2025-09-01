@@ -27,7 +27,7 @@ const EarthquakeTable = ({
 
   return (
     <div className='bg-white shadow-lg rounded-2xl overflow-x-auto mt-10'>
-      <table id='earthquake-table' className='min-w-[0px] md:min-w-full'>
+      <table id='earthquake-table'>
         <caption className='sr-only'>
           Table of recent earthquakes. Tab to move between rows; press Enter to
           select it and open the matching map marker.

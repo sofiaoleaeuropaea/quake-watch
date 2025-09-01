@@ -41,9 +41,9 @@ const Navbar = () => {
                 alt='QuakeWave Logo'
                 className='w-10 h-10'
               />
-              <span className='font-bold text-lg sm:text-xl md:text-2xl'>
+              <h1 className='font-bold text-lg sm:text-xl md:text-2xl'>
                 QuakeWatch
-              </span>
+              </h1>
             </div>
           </Link>
 

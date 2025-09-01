@@ -40,9 +40,9 @@ const MapView = ({
   return (
     <div  role="region"
   aria-labelledby="map-title" className='h-[550px] md:h-[650px] bg-[#1C1C1E] rounded-2xl shadow-lg overflow-hidden flex flex-col'>
-      <div className='bg-[#327FEF] text-white p-4 rounded-t-2xl'>
+      <div className='bg-[#327FEF] p-4 rounded-t-2xl'>
         <h2 id="map-title">Interactive Earthquake Map</h2>
-        <p className='text-sm text-[#D1D1D1] mt-1'>
+        <p className='mt-1'>
           Real-time visualization of global seismic activity
         </p>
       </div>
