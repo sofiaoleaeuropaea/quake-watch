@@ -1,5 +1,5 @@
   export const navItems = [
-    { label: 'Dashboard', href: '#dashboard' },
-    { label: 'Alerts', href: '#alerts' },
-    { label: 'Settings', href: '#settings' },
+    { label: 'Dashboard', href: '/quake-watch/' },
+    { label: 'Alerts', href: '' },
+    { label: 'Settings', href: '' },
   ];
