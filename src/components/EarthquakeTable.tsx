@@ -2,11 +2,23 @@ import { usePagination } from '../hooks/usePagination';
 import { useEarthquakes } from '../hooks/useEarthquakes';
 
 import EarthquakeItem from './EarthquakeItem';
+import type { Earthquake } from '../types/earthquake';
+
+export type EarthquakeTableProps = {
+  earthquakes: Earthquake[];
+  selectedEarthquake?: Earthquake | null;
+  onRowClick?: (q: Earthquake) => void;
+};
 
 const ITEMS_PER_PAGE = 15;
 
-const EarthquakeTable = () => {
-  const { earthquakes, loading, error } = useEarthquakes();
+const EarthquakeTable = ({
+  earthquakes,
+  selectedEarthquake,
+  onRowClick,
+}: EarthquakeTableProps) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
   const { currentItems, currentPage, totalPages, nextPage, previousPage } =
     usePagination({
       items: earthquakes,
