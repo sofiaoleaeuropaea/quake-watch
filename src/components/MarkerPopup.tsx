@@ -1,14 +1,13 @@
 import { Popup } from 'react-leaflet';
 import { FaMapMarkerAlt, FaClock, FaGlobeAmericas } from 'react-icons/fa';
-import type { EarthquakeProps } from '../types/earthquake';
-import {
-  formatCoordinates,
-  magnitudeColorClasses,
-} from '../utils/formatEarthquakeData';
-import { formatDate } from '../utils/formatData';
+import type { Earthquake } from '../types/earthquake';
+import { formatCoordinates, formatDate } from '../utils/formatData';
+import { magnitudeColorClasses } from '../utils/magnitudeScales';
 import InfoCard from './InfoCard';
 
-const MarkerPopup = ({ earthquake }: EarthquakeProps) => {
+export type MarkerPopupProps = { earthquake: Earthquake };
+
+const MarkerPopup = ({ earthquake }: MarkerPopupProps) => {
   return (
     <Popup>
       <div className='min-w-[260px] text-sm space-y-3'>
