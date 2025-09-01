@@ -17,7 +17,7 @@ export const useEarthquakes = () => {
       const res = await fetch(USGS_API_URL);
       if (!res.ok) {
         throw new Error(
-          `Failed to fetch earthquake data. HTTP ${res.status} - ${res.statusText}`,
+          `Unable to load earthquake information. Check your internet connection or try refreshing the page.`,
         );
       }
 
