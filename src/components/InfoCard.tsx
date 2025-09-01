@@ -1,4 +1,9 @@
-import type { InfoCardProps } from '../types/earthquake';
+export interface InfoCardProps {
+  icon: React.ReactNode;
+  label: string;
+  value: string | number;
+  iconColor?: string;
+}
 
 const InfoCard = ({ icon, label, value, iconColor }: InfoCardProps) => (
   <div className='flex items-center gap-2 p-2 bg-gray-50 rounded'>

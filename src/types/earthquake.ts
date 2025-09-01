@@ -23,25 +23,3 @@ export interface Earthquake {
   time: number;
   coordinates: [number, number];
 }
-
-export interface EarthquakeProps {
-  earthquake: Earthquake;
-}
-
-export interface MapViewProps {
-  earthquakesData: Earthquake[];
-  selectedEarthquake:Earthquake | null;
-  onEarthquakeClick?: (eq: Earthquake) => void;
-}
-
-export interface InfoCardProps {
-  icon: React.ReactNode;
-  label: string;
-  value: string | number;
-  iconColor?: string;
-}
-
-export type EarthquakeTableProps = {
-  selectedEarthquake: Earthquake | null;
-  onRowClick?: (eq: Earthquake) => void;
-}
