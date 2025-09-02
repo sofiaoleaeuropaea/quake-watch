@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import QuakeWaveLogo from '../../public/assets/QuakeWave_logo.png';
-import { navItems } from '../utils/navItems';
+
+const navItems = [
+  { label: 'Dashboard', href: '/' },
+  { label: 'Alerts', href: '/alerts' },
+  { label: 'Settings', href: '/settings' },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
