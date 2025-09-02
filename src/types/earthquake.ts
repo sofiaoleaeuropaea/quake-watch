@@ -12,7 +12,7 @@ export interface USGSFeature {
 
 export interface USGSResponse {
   type: string;
-  metadata: object;
+  metadata: Record<string, unknown>;
   features: USGSFeature[];
 }
 

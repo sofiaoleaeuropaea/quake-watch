@@ -25,6 +25,7 @@ export const usePagination = <Item,>({
     Math.min(Math.max(initialPage, 1), totalPages),
   );
 
+  // Used to make sure the current page stays valid if the number of pages changes .
   useEffect(() => {
     setCurrentPage((p) => Math.min(Math.max(p, 1), totalPages));
   }, [totalPages]);

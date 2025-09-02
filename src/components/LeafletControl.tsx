@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import * as L from 'leaflet';
 import { useMap } from 'react-leaflet';
 
-type Props = {
+type LeafletControlProps = {
   position?: 'topleft' | 'topright' | 'bottomleft' | 'bottomright';
   className?: string;
   children: React.ReactNode;
@@ -13,7 +13,7 @@ const LeafletControl = ({
   position = 'bottomright',
   className,
   children,
-}: Props) => {
+}: LeafletControlProps) => {
   const map = useMap();
   const container = useMemo(() => {
     const div = L.DomUtil.create('div', className ?? '');

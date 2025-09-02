@@ -4,15 +4,25 @@ import type { Earthquake, USGSResponse } from '../types/earthquake';
 const USGS_API_URL =
   'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
 
+export type EarthquakesResult = {
+  earthquakes: Earthquake[];
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+};
+
+// USGS API returns data from the last 24h
 const fetchEarthquakes = async (): Promise<USGSResponse> => {
-  const res = await fetch(USGS_API_URL, { headers: { accept: 'application/json' } });
+  const res = await fetch(USGS_API_URL, {
+    headers: { accept: 'application/json' },
+  });
   if (!res.ok) {
     throw new Error(
-      'Unable to load earthquake information. Check your connection or refresh the page.'
+      'Unable to load earthquake information. Check your connection or refresh the page.',
     );
   }
   return res.json();
-}
+};
 
 const normalizeEarthquakeData = (data: USGSResponse): Earthquake[] => {
   const earthquakes: Earthquake[] = data.features.map((feature) => ({
@@ -27,29 +37,29 @@ const normalizeEarthquakeData = (data: USGSResponse): Earthquake[] => {
     ],
   }));
 
-  // Sort earthquakes by most recent first
+  // To ensure most recent earthquakes appear first
   earthquakes.sort((a, b) => b.time - a.time);
   return earthquakes;
-}
+};
 
-export const useEarthquakes = () => {
-  const {
-    data,
-    error,
-    isPending,
-    refetch,
-  } = useQuery<USGSResponse, Error, Earthquake[]>({
+// Hook loading and refreshing data every 60s
+export const useEarthquakes = (): EarthquakesResult => {
+  const { data, error, isPending, refetch } = useQuery<
+    USGSResponse,
+    Error,
+    Earthquake[]
+  >({
     queryKey: ['earthquakes', 'all_day'],
     queryFn: fetchEarthquakes,
-    select: normalizeEarthquakeData,                  
-    placeholderData: keepPreviousData,     
-    refetchInterval: 60_000, 
+    select: normalizeEarthquakeData,
+    placeholderData: keepPreviousData,
+    refetchInterval: 60_000,
   });
 
   return {
     earthquakes: data ?? [],
-    loading: isPending,                
+    loading: isPending,
     error: error ? error?.message : null,
     refetch,
   };
-}
+};
