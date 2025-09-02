@@ -37,7 +37,8 @@ A lightweight, interactive web app that displays recent earthquakes data on a ma
 - **Dates:** date-fns 4
 - **Icons:** react-icons
 - **AI:** `@google/generative-ai` (Gemini 1.5 Flash)
-- **TypeScript**, ESLint
+- **TypeScript** ESLint
+- **Unit Testing** Jest + Testing Library 
 
 ---
 
@@ -130,3 +131,4 @@ The Dashboard provides two automatically synced views. So, as a user you can:
 - **Large Datasets**: Pagination and memoization help, but the app doesn’t yet include heavy-duty optimizations like virtualized tables or clustered map markers.
 - **Offline Use**: The app depends on the live USGS feed, so it won’t work without an internet connection.
 - **Design**: The styling was intentionally kept simple and functional, with the main focus on clarity and core functionality rather than a polished, production-ready look. In the future, more advanced data analysis features could be added, such as interactive charts or trend visualizations, e.g..
+- **Unit Testing**: Only `normalizeEarthquakeData` is covered as a demonstration for this project. Additional tests must be added for hooks (e.g., `usePagination`, `useEarthquakes`) and utilities to increase confidence and coverage.
