@@ -1,6 +1,8 @@
 # QuakeWatch — Earthquake Monitoring Dashboard
 
-![Demo](docs/quakeWatch_demo.gif)
+<p align="center">
+  <img src="docs/quakeWatch_demo.gif" alt="Demo" width="700"/>
+</p>
 
 
 A lightweight, interactive web app that displays recent earthquakes data on a map and in a list. Built for quick exploration, simple analytics, and a clean UX. Uses public data (USGS API) and supports prompt-style filtering (via Gemini).
