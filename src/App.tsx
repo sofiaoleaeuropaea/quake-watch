@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 const App = () => {
   return (
     <>
@@ -11,6 +12,7 @@ const App = () => {
             <Route path='/' element={<Dashboard/>} />
           </Routes>
         </main>
+        <Footer/>
       </BrowserRouter>
     </>
   );
