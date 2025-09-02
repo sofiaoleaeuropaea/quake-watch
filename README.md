@@ -1,7 +1,7 @@
 # QuakeWatch — Earthquake Monitoring Dashboard
 
 <p align="center">
-  <img src="docs/quakeWatch_demo.gif" alt="Demo" width="700"/>
+  <img src="docs/quakeWatch_demo.gif" alt="Demo" width="650"/>
 </p>
 
 
