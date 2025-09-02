@@ -13,28 +13,33 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
-  const firstRender = useRef(true);
+  const openOnKeyboard = useRef(false);
 
   const toggleMobileMenu = () => setMobileOpen(!mobileOpen);
 
+  const handleToggleKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => {
+    if (event.key === 'Enter') openOnKeyboard.current = true;
+  };
+
   useEffect(() => {
     if (!mobileOpen) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileOpen(false);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileOpen(false);
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [mobileOpen]);
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
+    if (!openOnKeyboard.current) return;
+
     if (mobileOpen) {
       requestAnimationFrame(() => firstLinkRef.current?.focus());
     } else {
       requestAnimationFrame(() => toggleBtnRef.current?.focus());
+      openOnKeyboard.current = false; 
     }
   }, [mobileOpen]);
 
@@ -89,6 +94,7 @@ const Navbar = () => {
               type='button'
               ref={toggleBtnRef}
               onClick={toggleMobileMenu}
+              onKeyDown={handleToggleKeyDown}
               aria-expanded={mobileOpen}
               aria-controls='navigation-bar'
               aria-label={mobileOpen ? 'Close main menu' : 'Open main menu'}>
