@@ -24,7 +24,7 @@ const fetchEarthquakes = async (): Promise<USGSResponse> => {
   return res.json();
 };
 
-const normalizeEarthquakeData = (data: USGSResponse): Earthquake[] => {
+export const normalizeEarthquakeData = (data: USGSResponse): Earthquake[] => {
   const earthquakes: Earthquake[] = data.features.map((feature) => ({
     id: feature.id,
     location: feature.properties.place,
