@@ -27,7 +27,7 @@ const normalizePromptFilters = (obj: any): PromptFilters => {
 export const parsePromptWithGemini = async (prompt: string): Promise<PromptFilters> => {
   const geminikey = import.meta.env.VITE_GEMINI_API_KEY!;
   const res = await fetch(
-    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
     {
       method: 'POST',
       headers: {
