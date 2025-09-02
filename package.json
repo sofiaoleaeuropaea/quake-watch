@@ -4,13 +4,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "vite --host --open",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "npm run typecheck && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test": "jest --watch",
+    "test:watch": "jest --watch",
     "predeploy": "npm run build",
-    "deploy": "cp dist/index.html dist/404.html || true && gh-pages -d dist",
-    "test": "jest --watch"
+    "deploy": "cp dist/index.html dist/404.html || true && gh-pages -d dist"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
