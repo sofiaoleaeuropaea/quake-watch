@@ -13,6 +13,9 @@ const queryClient = new QueryClient({
       retry: 2,
       refetchOnWindowFocus: true,
     },
+     mutations: {
+      retry: 0, 
+    },
   },
 });
 
