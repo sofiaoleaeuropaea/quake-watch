@@ -4,11 +4,11 @@ import Navbar from './components/Navbar';
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Navbar/>
         <main>
           <Routes>
-            <Route path='/quake-watch' element={<Dashboard/>} />
+            <Route path='/' element={<Dashboard/>} />
           </Routes>
         </main>
       </BrowserRouter>
