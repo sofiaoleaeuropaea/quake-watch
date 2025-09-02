@@ -17,11 +17,11 @@ Respond with JSON only and give no explanations.
 `;
 
 const normalizePromptFilters = (obj: any): PromptFilters => {
-  const data: PromptFilters = {};
-  if (typeof obj?.minMagnitude === 'number' && isFinite(obj.minMagnitude)) data.minMagnitude = obj.minMagnitude;
-  if (typeof obj?.regionText === 'string' && obj.regionText.trim()) data.regionText = obj.regionText.trim();
-  if (typeof obj?.hours === 'number' && isFinite(obj.hours)) data.hours = Math.max(1, Math.floor(obj.hours));
-  return data;
+  const normalizedFilters: PromptFilters = {};
+  if (typeof obj?.minMagnitude === 'number' && isFinite(obj.minMagnitude)) normalizedFilters.minMagnitude = obj.minMagnitude;
+  if (typeof obj?.regionText === 'string' && obj.regionText.trim()) normalizedFilters.regionText = obj.regionText.trim();
+  if (typeof obj?.hours === 'number' && isFinite(obj.hours)) normalizedFilters.hours = Math.max(1, Math.floor(obj.hours));
+  return normalizedFilters;
 }
 
 export const parsePromptWithGemini = async (prompt: string): Promise<PromptFilters> => {
