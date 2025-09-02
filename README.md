@@ -128,7 +128,7 @@ The Dashboard provides two automatically synced views. So, as a user you can:
 ### Limitations
 
 - **RBAC**: Role-based access (e.g., admin vs. viewer) is not yet included. This feature would be best supported with a backend and can be added in a future iteration to provide finer-grained control over access and permissions.
-- **Large Datasets**: Pagination and memoization help, but the app doesn’t yet include heavy-duty optimizations like virtualized tables or clustered map markers.
+- **Large Datasets**: Pagination and memoization are already an improvement, but the app doesn’t yet include heavy-duty optimizations like virtualized tables or clustered map markers. Given more time, I would replace pagination with a virtualized list using `react-window` for handling rows more efficiently, avoiding rendering all DOM nodes at once and improving performance.
 - **Offline Use**: The app depends on the live USGS feed, so it won’t work without an internet connection.
 - **Design**: The styling was intentionally kept simple and functional, with the main focus on clarity and core functionality rather than a polished, production-ready look. In the future, more advanced data analysis features could be added, such as interactive charts or trend visualizations, e.g..
 - **Unit Testing**: Only `normalizeEarthquakeData` is covered as a demonstration for this project. Additional tests must be added for hooks (e.g., `usePagination`, `useEarthquakes`) and utilities to increase confidence and coverage.
