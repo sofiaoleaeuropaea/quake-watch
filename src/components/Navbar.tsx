@@ -13,6 +13,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
+  const firstRender = useRef(true);
 
   const toggleMobileMenu = () => setMobileOpen(!mobileOpen);
 
@@ -26,6 +27,10 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
     if (mobileOpen) {
       requestAnimationFrame(() => firstLinkRef.current?.focus());
     } else {
@@ -55,7 +60,6 @@ const Navbar = () => {
           <ul
             id='navigation-bar'
             role='list'
-            aria-hidden={!mobileOpen && undefined}
             className={[
               mobileOpen ? 'block' : 'hidden',
               'absolute left-0 right-0 top-16 z-40 bg-[#1C1C1E] px-4 py-2 space-y-2',
