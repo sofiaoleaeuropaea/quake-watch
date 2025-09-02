@@ -9,11 +9,11 @@ type Props = {
   children: React.ReactNode;
 };
 
-export default function LeafletControl({
+const LeafletControl = ({
   position = 'bottomright',
   className,
   children,
-}: Props) {
+}: Props) => {
   const map = useMap();
   const container = useMemo(() => {
     const div = L.DomUtil.create('div', className ?? '');
@@ -32,3 +32,5 @@ export default function LeafletControl({
 
   return createPortal(children, container);
 }
+
+export default LeafletControl;

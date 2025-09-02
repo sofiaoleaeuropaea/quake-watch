@@ -8,7 +8,7 @@ const earthquakeLegends = [
   { label: 'Major: ≥ 7', color: '#dc2626' },
 ];
 
-export default function MapLegend() {
+const MapLegend = () => {
   return (
     <LeafletControl
       position='bottomright'
@@ -30,4 +30,6 @@ export default function MapLegend() {
       </div>
     </LeafletControl>
   );
-}
+};
+
+export default MapLegend;

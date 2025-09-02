@@ -4,7 +4,7 @@ import type { Earthquake, USGSResponse } from '../types/earthquake';
 const USGS_API_URL =
   'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
 
-async function fetchEarthquakes(): Promise<USGSResponse> {
+const fetchEarthquakes = async (): Promise<USGSResponse> => {
   const res = await fetch(USGS_API_URL, { headers: { accept: 'application/json' } });
   if (!res.ok) {
     throw new Error(
@@ -14,7 +14,7 @@ async function fetchEarthquakes(): Promise<USGSResponse> {
   return res.json();
 }
 
-function normalizeEarthquakeData(data: USGSResponse): Earthquake[] {
+const normalizeEarthquakeData = (data: USGSResponse): Earthquake[] => {
   const earthquakes: Earthquake[] = data.features.map((feature) => ({
     id: feature.id,
     location: feature.properties.place,
@@ -32,7 +32,7 @@ function normalizeEarthquakeData(data: USGSResponse): Earthquake[] {
   return earthquakes;
 }
 
-export function useEarthquakes() {
+export const useEarthquakes = () => {
   const {
     data,
     error,

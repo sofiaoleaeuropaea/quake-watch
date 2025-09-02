@@ -15,14 +15,14 @@ export interface UsePaginationResult<Item> {
   previousPage: () => void;
 }
 
-export function usePagination<Item>({
+export const usePagination = <Item,>({
   items,
   itemsPerPage,
   initialPage = 1,
-}: UsePaginationProps<Item>): UsePaginationResult<Item> {
+}: UsePaginationProps<Item>): UsePaginationResult<Item> => {
   const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
   const [currentPage, setCurrentPage] = useState(
-    Math.min(Math.max(initialPage, 1), totalPages)
+    Math.min(Math.max(initialPage, 1), totalPages),
   );
 
   useEffect(() => {
@@ -31,11 +31,8 @@ export function usePagination<Item>({
 
   const currentItems = useMemo(
     () =>
-      items.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-      ),
-    [items, currentPage, itemsPerPage]
+      items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage),
+    [items, currentPage, itemsPerPage],
   );
 
   const navigateToPage = (page: number) =>
@@ -43,5 +40,12 @@ export function usePagination<Item>({
   const nextPage = () => setCurrentPage((p) => Math.min(p + 1, totalPages));
   const previousPage = () => setCurrentPage((p) => Math.max(p - 1, 1));
 
-  return { currentItems, currentPage, totalPages, navigateToPage, nextPage, previousPage };
-}
+  return {
+    currentItems,
+    currentPage,
+    totalPages,
+    navigateToPage,
+    nextPage,
+    previousPage,
+  };
+};
