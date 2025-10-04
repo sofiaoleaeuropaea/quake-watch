@@ -75,7 +75,7 @@ Then open http://localhost:5173
 ### 4) Build for Production
 
 ```bash
-npm run buid
+npm run build
 ```
 
 To preview the production build locally:
