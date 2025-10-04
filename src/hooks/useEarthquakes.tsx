@@ -24,11 +24,13 @@ const fetchEarthquakes = async (): Promise<USGSResponse> => {
   return res.json();
 };
 
+const normalizeMagnitude = (x: number) => Math.round(x * 10) / 10;
+
 export const normalizeEarthquakeData = (data: USGSResponse): Earthquake[] => {
   const earthquakes: Earthquake[] = data.features.map((feature) => ({
     id: feature.id,
     location: feature.properties.place,
-    magnitude: feature.properties.mag,
+    magnitude: normalizeMagnitude(feature.properties.mag ?? 0),
     time: feature.properties.time,
     //Transforming because GeoJSON uses [longitude, latitude] and Leaflet requires [latitude, longitude]
     coordinates: [
