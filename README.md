@@ -36,7 +36,7 @@ A lightweight, interactive web app that displays recent earthquakes data on a ma
 - **Routing:** React Router 7
 - **Dates:** date-fns 4
 - **Icons:** react-icons
-- **AI:** `@google/generative-ai` (Gemini 1.5 Flash)
+- **AI:** `@google/generative-ai` (Gemini 2.5 Flash)
 - **TypeScript** ESLint
 - **Unit Testing** Jest + Testing Library 
 
