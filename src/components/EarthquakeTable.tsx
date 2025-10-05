@@ -52,7 +52,7 @@ const EarthquakeTable = ({
                   <FaInfoCircle aria-hidden='true' />
                 </button>
                 {showTooltip && (
-                  <div className='absolute top-6 left-0 w-48 p-2 text-xs bg-gray-50 text-gray-800 rounded shadow-lg z-50'>
+                  <div className='absolute top-6 right-0 w-48 p-2 text-xs bg-gray-50 text-gray-800 rounded shadow-lg z-50'>
                     Earthquake magnitudes are measured on the Richter scale.
                   </div>
                 )}
