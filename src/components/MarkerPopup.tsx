@@ -12,7 +12,7 @@ const MarkerPopup = ({ earthquake }: MarkerPopupProps) => {
     <Popup>
       <div className='min-w-[260px] text-sm space-y-3'>
         <span
-          className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${magnitudeColorClasses(
+          className={`inline-block px-3 py-1 rounded-full text-xs sm:text-sm font-semibold ${magnitudeColorClasses(
             earthquake.magnitude,
           )}`}>
           M {earthquake.magnitude.toFixed(1)}
@@ -20,13 +20,13 @@ const MarkerPopup = ({ earthquake }: MarkerPopupProps) => {
 
         <div className='grid grid-cols-1 gap-2 text-xs'>
           <InfoCard
-            icon={<FaMapMarkerAlt />}
+            icon={FaMapMarkerAlt}
             label='Location'
             value={earthquake.location}
             iconColor='text-red-500'
           />
           <InfoCard
-            icon={<FaGlobeAmericas />}
+            icon={FaGlobeAmericas}
             label='Coordinates'
             value={formatCoordinates(
               earthquake.coordinates[0],
@@ -35,7 +35,7 @@ const MarkerPopup = ({ earthquake }: MarkerPopupProps) => {
             iconColor='text-green-500'
           />
           <InfoCard
-            icon={<FaClock />}
+            icon={FaClock}
             label='Time'
             value={formatDate(earthquake.time)}
             iconColor='text-blue-500'
