@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import QuakeWaveLogo from '../../public/assets/QuakeWave_logo.png';
+import QuakeWaveLogo from '../assets/QuakeWave_logo.png';
 
 const navItems = [
   { label: 'Dashboard', href: '/' },
