@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import App from './App.tsx';
+import 'leaflet/dist/leaflet.css';
 import './styles/index.css';
 
 const queryClient = new QueryClient({
