@@ -27,7 +27,7 @@ export const createMarkerIcon = (
           color: white;
         "
       >
-        ${magnitude.toFixed(1)}
+        ${magnitude}
       </div>
     `,
     iconSize: [size, size],

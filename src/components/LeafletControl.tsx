@@ -10,7 +10,7 @@ type LeafletControlProps = {
 };
 
 const LeafletControl = ({
-  position = 'bottomright',
+  position,
   className,
   children,
 }: LeafletControlProps) => {

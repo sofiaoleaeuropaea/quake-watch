@@ -48,7 +48,7 @@ const EarthquakeItem = ({
           className={`px-2 py-1 rounded-full text-xs ${magnitudeColorClasses(
             earthquake.magnitude,
           )}`}>
-          M {earthquake.magnitude.toFixed(1)}
+          M {earthquake.magnitude}
         </span>
       </td>
     </tr>

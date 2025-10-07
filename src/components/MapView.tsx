@@ -37,10 +37,12 @@ const MapView = ({
     }
   }, [earthquakesData]);
   return (
-    <div  role="region"
-  aria-labelledby="map-title" className='h-[550px] md:h-[650px] bg-[#1C1C1E] rounded-2xl shadow-lg overflow-hidden flex flex-col'>
+    <div
+      role='region'
+      aria-labelledby='map-title'
+      className='h-[550px] md:h-[650px] bg-[#1C1C1E] rounded-2xl shadow-lg overflow-hidden flex flex-col'>
       <div className='bg-[#327FEF] p-4 rounded-t-2xl'>
-        <h2 id="map-title">Interactive Earthquake Map</h2>
+        <h2 id='map-title'>Interactive Earthquake Map</h2>
         <p className='mt-1'>
           Real-time visualization of global seismic activity
         </p>

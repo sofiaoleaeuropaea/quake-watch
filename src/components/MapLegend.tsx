@@ -13,7 +13,10 @@ const MapLegend = () => {
     <LeafletControl
       position='bottomright'
       className='p-2 rounded bg-white shadow'>
-      <div role='group' aria-label='Magnitude legend'>
+      <div role='region' aria-labelledby='legend-title' tabIndex={0}>
+        <h2 id='legend-title' className='sr-only'>
+          Magnitude legend
+        </h2>
         <strong className='block mb-1'>Magnitude</strong>
         <ul className='space-y-1'>
           {earthquakeLegends.map((legend) => (
