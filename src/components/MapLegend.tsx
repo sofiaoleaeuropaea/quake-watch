@@ -14,10 +14,9 @@ const MapLegend = () => {
       position='bottomright'
       className='p-2 rounded bg-white shadow'>
       <div role='region' aria-labelledby='legend-title' tabIndex={0}>
-        <h2 id='legend-title' className='sr-only'>
-          Magnitude legend
-        </h2>
-        <strong className='block mb-1'>Magnitude</strong>
+        <strong id='legend-title' className='block mb-1'>
+          Magnitude
+        </strong>
         <ul className='space-y-1'>
           {earthquakeLegends.map((legend) => (
             <li key={legend.label} className='flex items-center gap-2'>
