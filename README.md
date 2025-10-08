@@ -91,7 +91,7 @@ npm run preview
 The Dashboard provides two automatically synced views. So, as a user you can:
 1. Open the dashboard to see a list of recent earthquakes and a synced map.  
 2. Click on a list row to zoom the map to that earthquake and vice-versa.  
-3. Use filters, like magnitude, time and region, or enter a natural language prompt to refine results.  
+3. Enter a natural language prompt to refine results.  
 
 ---
 
@@ -106,7 +106,7 @@ The Dashboard provides two automatically synced views. So, as a user you can:
 - **React Query** manages data fetching, caching, and background refresh.
 - **Leaflet + React** Leaflet chosen for lightweight, proven web mapping.
 - **Tailwind CSS** for responsive UI with minimal boilerplate.
-- **Legend on the map** explains marker colors, helping the users to quickly interpret earthquake severity.  
+- **Legend on the map** explains marker colors, helping the users to interpret earthquake severity quickly.  
 - **Marker styling:** points vary in size and color by magnitude, providing an at-a-glance sense of impact.  
 - **Tooltip on magnitude column** clarifies that magnitudes are measured using the Richter scale, improving user understanding.  
 - **Pagination on the list** keeps the UI less crowded and ensures large datasets remain manageable for the user.  
